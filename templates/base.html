@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Enlace a Bootstrap CSS para estilos prediseñados -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Enlace al archivo de estilos CSS personalizado -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Enlace a la página de inicio -->
+        <a class="navbar-brand" href="{{ url_for('home') }}">Inicio</a>
+        <!-- Botón para desplegar el menú en pantallas pequeñas -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Menú de navegación -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <!-- Enlace a la lista de libros -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('list_books') }}">Libros</a>
+                </li>
+                <!-- Enlace a la lista de usuarios -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('list_users') }}">Usuarios</a>
+                </li>
+                <!-- Enlace a la lista de préstamos -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('list_loans') }}">Préstamos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="container mt-4">
+        <!-- Mostrar mensajes flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <!-- Bloque de contenido dinámico -->
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Enlace a jQuery y Bootstrap JS para interactividad -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Otros scripts JavaScript -->
+</body>
+</html>

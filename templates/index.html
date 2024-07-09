@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Bienvenido a la Biblioteca</h1>
+    <a href="{{ url_for('list_books') }}">Ver Libros</a>
+    <a href="{{ url_for('add_book') }}">Agregar Libro</a>
+</body>
+</html>

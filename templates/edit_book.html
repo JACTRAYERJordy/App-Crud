@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Libro</title>
+    <!-- Enlace al archivo de estilos CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Enlace a Bootstrap CSS para estilos prediseñados -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Editar Libro</h1>
+    <!-- Formulario para editar un libro existente -->
+    <form method="post">
+        <!-- Campo para el título del libro con valor prellenado -->
+        <label>Título</label>
+        <input type="text" name="title" value="{{ book[1] }}" required>
+        <!-- Campo para el autor del libro con valor prellenado -->
+        <label>Autor</label>
+        <input type="text" name="author" value="{{ book[2] }}" required>
+        <!-- Campo para el año de publicación del libro con valor prellenado -->
+        <label>Año</label>
+        <input type="number" name="year" value="{{ book[3] }}" required>
+        <!-- Botón para enviar el formulario y actualizar el libro -->
+        <button type="submit">Actualizar Libro</button>
+    </form>
+</body>
+</html>
